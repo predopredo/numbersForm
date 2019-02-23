@@ -47,6 +47,7 @@ export class NumbersService {
       })
     })
   }
+  
 
   getSum() {
     const sumFunction = (total, num) => {
