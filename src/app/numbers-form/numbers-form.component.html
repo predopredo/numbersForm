@@ -1,0 +1,89 @@
+<div class="main container">
+    <h5
+        class="text-center"
+        *ngIf="result"
+    >
+        {{result}}
+    </h5>
+    <h5
+        *ngIf="!result"
+        class="description text-center"
+    >
+        Some múltiplos de um ou mais números em um intervalo de números reais
+    </h5>
+    <div
+        class="col-xl-6 offset-xl-3"
+        *ngIf="!result"
+    >
+        <form
+            class="form-group"
+            [formGroup]="numbersForm"
+        >
+            <div class="labelContainer">
+                <label for="multiplesOf">Multiplos de</label>
+                <span
+                    [class]="numbersForm.controls.multiplesOf.valid ? 'validInput' : 'invalidInput'"
+                    *ngIf="numbersForm.controls.multiplesOf.touched"
+                >
+                    {{ notifyValidation(numbersForm.controls.multiplesOf) }}
+                </span>
+            </div>
+            <input
+                type="text"
+                name="mutlipesOf"
+                class="form-control"
+                placeholder="Um ou mais números inteiros separados por vírgula"
+                formControlName="multiplesOf"
+            >
+            <div class="labelContainer">
+                <label for="initial">Números entre:</label>
+                <span
+                    [class]="numbersForm.controls.initialNumber.valid ? 'validInput' : 'invalidInput'"
+                    *ngIf="numbersForm.controls.initialNumber.touched "
+                >
+                    {{ notifyValidation(numbersForm.controls.initialNumber) }}
+                </span>
+            </div>
+            <input
+                type="number"
+                name="initial"
+                class="form-control"
+                placeholder="Número Inicial"
+                formControlName="initialNumber"
+            >
+            <div class="labelContainer">
+                <label for="final">E:</label>
+                <span
+                    [class]="numbersForm.controls.finalNumber.valid ? 'validInput' : 'invalidInput'"
+                    *ngIf="numbersForm.controls.finalNumber.touched"
+                >
+                    {{ notifyValidation(numbersForm.controls.finalNumber) }}
+                </span>
+            </div>
+            <input
+                type="number"
+                name="final"
+                class="form-control"
+                placeholder="Número final"
+                formControlName="finalNumber"
+            >
+        </form>
+    </div>
+    <div class="col-xl-12 text-center">
+        <button
+            class="btn btn-dark calculate"
+            (click)="onCalculate()"
+            *ngIf="!result"
+            [disabled]="numbersForm.invalid"
+        >
+            Calcular
+        </button>
+        <button
+            class="btn btn-light reset"
+            *ngIf="result"
+            (click)="onNew()"
+        >
+            Novo
+        </button>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+.main {
+    width: 100vw;
+}
+
+label {
+    font-size: 12px;
+}
+
+.labelContainer {
+    margin-top: 12px;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+input {
+    margin-bottom: 5px;
+    margin-top: -7px;
+}
+
+input:focus {
+    box-shadow: 0 0 0 0.2rem rgba(110, 110, 110, 0.178);
+    border: 1px solid #ced6daa4;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid rgba(255, 0, 0, 0.253);
+}
+
+input.ng-invalid.ng-touched:focus {
+    border: 1px solid rgba(255, 0, 0, 0.103);
+}
+
+span.invalidInput {
+    font-size: 10px;
+    color: rgba(255, 0, 0, 0.65);
+}
+
+input.ng-valid.ng-touched {
+    border: 1px solid rgba(0, 133, 0, 0.226);
+}
+
+input.ng-valid.ng-touched:focus {
+    border: 1px solid rgba(0, 133, 0, 0.096);
+}
+
+span.validInput {
+    font-size: 10px;
+    color: rgba(0, 128, 0, 0.7);
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-size: 12px;
+    color: lightgrey;
+    opacity: 1;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    font-size: 12px;
+    color: lightgrey;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    font-size: 12px;
+    color: lightgrey;
+}
+
+.calculate {
+    margin-top: 10px;
+}
+
+.reset {
+    margin-top: 30px;
+    border: 1px solid black;
+}
