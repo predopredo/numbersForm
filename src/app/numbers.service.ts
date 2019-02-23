@@ -23,7 +23,6 @@ export class NumbersService {
         this.numbersArray.push(i)
       }
     }
-
   }
 
   setMultiples(multiplesArray: number[]) {
