@@ -23,6 +23,7 @@ export class NumbersService {
         this.numbersArray.push(i)
       }
     }
+
   }
 
   setMultiples(multiplesArray: number[]) {
@@ -47,7 +48,6 @@ export class NumbersService {
       })
     })
   }
-  
 
   getSum() {
     const sumFunction = (total, num) => {
@@ -58,13 +58,16 @@ export class NumbersService {
 
   calculate(initial: number, final: number, multiplesOf: number[]) {
     this.generateNumbersBetween(initial, final);
+
     this.setMultiples(multiplesOf);
+    const multiplesString = this.setArrayToText(multiplesOf)
+
     this.filterNumbers();
 
     if (this.finalArray.length) {
-      return `A soma dos múltiplos de ${this.setArrayToText(multiplesOf)}, nos números que estão entre ${initial} e ${final} é ${this.getSum()}.`
+      return `A soma dos múltiplos de ${multiplesString}, nos números que estão entre ${initial} e ${final} é ${this.getSum()}.`
     } else {
-      return `Não existem múltiplos de ${this.setArrayToText(multiplesOf)} nos números que estão entre ${initial} e ${final}!`
+      return `Não existem múltiplos de ${multiplesString} nos números que estão entre ${initial} e ${final}!`
     }
   }
 }

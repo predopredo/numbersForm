@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NumbersService } from '../numbers.service'; //importa o numbers service
 
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms'; //importa as classes/interfaces de formulários do angular
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms'; //importa as classes/interfaces/tipos de formulários do angular
 
 @Component({
   selector: 'app-numbers-form',
@@ -14,7 +14,6 @@ export class NumbersFormComponent implements OnInit {
 
   numbersForm: FormGroup //necessário pra integrar com o html
   result: string //adicionei pra controlar o que vai aparecer no view com as diretivas
-  multiplesDisplay: string
 
   constructor(private numbersService: NumbersService) { }
 
@@ -36,11 +35,11 @@ export class NumbersFormComponent implements OnInit {
   }
 
   notifyValidation(control: AbstractControl): string {
-    if (control.invalid && (control === this.numbersForm.get('initialNumber') || control === this.numbersForm.get('finalNumber'))) {
+    if (control.invalid && (control === this.numbersForm.controls.initialNumber || control === this.numbersForm.controls.finalNumber )) {
       return 'Preencha com um número'
-    } else if (control.invalid && control === this.numbersForm.get('multiplesOf') && !control.value) {
+    } else if (control.invalid && control === this.numbersForm.controls.multiplesOf && !control.value) {
       return 'Preenchimento Obrigatório'
-    } else if (control.invalid && control === this.numbersForm.get('multiplesOf') && control.value) {
+    } else if (control.invalid && control === this.numbersForm.controls.multiplesOf && control.value) {
       return 'Somente números inteiros separados por vírgula'
     } else {
       return 'ok ✓'
