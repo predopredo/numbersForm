@@ -2,7 +2,7 @@
 
 Criei um componente que possui um formulário com 3 inputs, onde o usuário insere numeros pra definir um intervalo e um ou mais números como múltiplos. 
 
-Os valores do formulários são enviados para um serviço (uma classe separada) que usa os métodos pra calcular a soma dos múltiplos dos números fornecidos, dentro do intervalo fornecido. Ao clicar em "calcular" o resultado é mostrado e o usuário pode cliar em "novo" para resetar tudo e realizar outra soma. 
+Os valores do formulários são enviados para um serviço (uma classe separada) que usa métodos pra calcular a soma dos múltiplos dos números fornecidos, dentro do intervalo fornecido. Ao clicar em "calcular" o resultado é mostrado e o usuário pode clicar em "novo" para resetar tudo e realizar outra soma. 
 
 Para alternar entre o display do formulário e do resultado, usei a diretiva *ngIf do angular e passando a propriedade "result" pra controlar o que é mostrado. 
 
