@@ -6,29 +6,7 @@ import { Injectable } from '@angular/core';
 
 export class NumbersService {
 
-  numbersArray: number[]
-  multiplesOf: number[]
-  finalArray: number[]
-
   constructor() { }
-
-  generateNumbersBetween(first: number, last: number) {
-    this.numbersArray = []
-    if (Math.round(first) < Math.round(last)) {
-      for (let i = Math.round(first); i < Math.round(last); i++) {
-        this.numbersArray.push(i)
-      }
-    } else {
-      for (let i = Math.round(last); i < Math.round(first); i++) {
-        this.numbersArray.push(i)
-      }
-    }
-
-  }
-
-  setMultiples(multiplesArray: number[]) {
-    this.multiplesOf = multiplesArray
-  }
 
   setArrayToText(array) {
     if (array.length > 1) {
@@ -38,36 +16,32 @@ export class NumbersService {
     }
   }
 
-  filterNumbers() {
-    this.finalArray = []
-    this.numbersArray.forEach(number => {
-      this.multiplesOf.forEach(multiple => {
-        if (number % multiple === 0 && !this.finalArray.includes(number) && number != 0) {
-          this.finalArray.push(number)
+calculate(initial: number, final: number, multiplesOf: number[]) {
+
+    let smaller: number
+    let bigger: number
+
+    let textMultiples = this.setArrayToText(multiplesOf)
+    let result: number = 0
+
+    initial < final ? smaller = initial : bigger = initial;
+    final < initial ? smaller = final : bigger = final;
+
+    for (let i = smaller; i < bigger; i++) {
+      let checkIfSame: number
+      multiplesOf.forEach(multiple => {
+        if (i % multiple === 0 && i != checkIfSame) {
+          result += i;
+          checkIfSame = i
         }
       })
-    })
-  }
-
-  getSum() {
-    const sumFunction = (total, num) => {
-      return total + num
     }
-    return this.finalArray.reduce(sumFunction)
-  }
 
-  calculate(initial: number, final: number, multiplesOf: number[]) {
-    this.generateNumbersBetween(initial, final);
-
-    this.setMultiples(multiplesOf);
-    const multiplesString = this.setArrayToText(multiplesOf)
-
-    this.filterNumbers();
-
-    if (this.finalArray.length) {
-      return `A soma dos múltiplos de ${multiplesString}, nos números que estão entre ${initial} e ${final} é ${this.getSum()}.`
+    if (result > 0) {
+      return `A soma dos múltiplos de ${textMultiples} nos números que estão entre ${initial} e ${final} é ${result}.`
     } else {
-      return `Não existem múltiplos de ${multiplesString} nos números que estão entre ${initial} e ${final}!`
+      return `Não existem múltiplos de ${textMultiples} nos números que estão entre ${initial} e ${final}!`
     }
   }
+
 }
