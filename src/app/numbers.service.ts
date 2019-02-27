@@ -9,11 +9,8 @@ export class NumbersService {
   constructor() { }
 
   setArrayToText(array) {
-    if (array.length > 1) {
-      return `${array.slice(0, (array.length - 1)).join(', ')} e ${array[array.length - 1]}`
-    } else {
-      return array.join('')
-    }
+    let text = array.length > 1 ? `${array.slice(0, (array.length - 1)).join(', ')} e ${array[array.length - 1]}` : array.join('');
+    return text
   }
 
 calculate(initial: number, final: number, multiplesOf: number[]) {
