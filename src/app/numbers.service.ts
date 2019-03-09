@@ -8,23 +8,22 @@ export class NumbersService {
 
   constructor() { }
 
-  setArrayToText(array) {
+  setNuberArrayToText(array) {
     let text = array.length > 1 ? `${array.slice(0, (array.length - 1)).join(', ')} e ${array[array.length - 1]}` : array.join('');
     return text
   }
 
 calculate(initial: number, final: number, multiplesOf: number[]) {
-
     let smaller: number
     let bigger: number
 
-    let textMultiples = this.setArrayToText(multiplesOf)
+    let textMultiples = this.setNuberArrayToText(multiplesOf)
     let result: number = 0
 
     initial < final ? smaller = initial : bigger = initial;
     final < initial ? smaller = final : bigger = final;
 
-    for (let i = smaller; i < bigger; i++) {
+    for (let i = Math.round(smaller); i < Math.round(bigger); i++) {
       let checkIfSame: number
       multiplesOf.forEach(multiple => {
         if (i % multiple === 0 && i != checkIfSame) {
